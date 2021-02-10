@@ -28,23 +28,43 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
-  let wname = `<h1>${variables.name} ${variables.lastname}</h1>`;
-  let role = `<h2>${variables.role}</h2>`;
-  let location = `<h1>${variables.city}, ${variables.country}</h1>`;
-  let instagramURL = `example`;
+  let name = `${variables.name}`;
+  variables.name == null ? (name = "") : name;
+  let lastname = `${variables.lastname}`;
+  variables.lastname == null ? (lastname = "") : lastname;
+  let role = `${variables.role}`;
+  variables.role == null ? (role = "") : role;
+  let city = `${variables.city}`;
+  variables.city == null ? (city = "") : city;
+  let country = `${variables.country}`;
+  variables.country == null ? (country = "") : country;
+  let twit = `${variables.twit}`;
+  variables.twit == null ? (twit = "") : twit;
+  let github = `${variables.github}`;
+  variables.github == null ? (github = "") : github;
+  let linkedin = `${variables.linkedin}`;
+  variables.linkedin == null ? (linkedin = "") : linkedin;
+  let insta = `${variables.insta}`;
+  variables.insta == null ? (insta = "") : insta;
+  let banner = `${variables.socialMediaPosition}`;
+  variables.socialMediaPosition == "position-left" 
+  ? (socialMediaPosition = "position-left") 
+  : (socialMediaPosition = "position-right") ;
+
+  position-right
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-            ${wname}
-            ${role}
-            ${location}
-          <ul class="position-right">
-            <li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="${variables.instagramURL}"><i class="fa fa-instagram"></i></a></li>
+            <h1>${name} ${lastname}</h1>
+            <h2>${role}</h2>
+            <h3>${city}, ${country}</h3>
+          <ul class="${banner}">
+            <li><a href="https://twitter.com/${twit}"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${github}"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://linkedin.com//in/${linkedin}"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${insta}"><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
